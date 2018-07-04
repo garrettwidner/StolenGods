@@ -62,7 +62,6 @@ public class BoundableCamera : MonoBehaviour
     {
         shouldLerp = true;
         smoothVelocity = Vector3.zero;
-
     }
 
 
@@ -91,7 +90,7 @@ public class BoundableCamera : MonoBehaviour
         
         if(isInLargeRoom)
         {
-            ConstrainCameraToBounds(ref desiredCameraPosition);
+            ConstrainCameraToBounds();
         }
 
         if (shouldLerp)
@@ -103,7 +102,6 @@ public class BoundableCamera : MonoBehaviour
             KeepCameraOnTarget();
         }
         print(desiredCameraPosition);
-
     }
 
     private void SetDesiredCameraPosition()
@@ -117,75 +115,9 @@ public class BoundableCamera : MonoBehaviour
         {
             desiredCameraPosition = trackedTransform.position;
         }
-
-        /*
-        Bounds camBounds = cameraBounds.bounds;
-        Vector2 roomUpperRight = camBounds.center + camBounds.extents;
-        Vector2 roomLowerLeft = camBounds.center - camBounds.extents;
-
-        Vector2 corner = Vector2.zero;
-        Vector2 desiredCameraOffset = Vector2.zero;
-        bool useOffsetX = false;
-        bool useOffsetY = false;
-
-        //Find real world screen size
-        Vector2 halfScreenSize = new Vector2();
-        Vector2 screenPoint1 = cam.ViewportToWorldPoint(Vector2.zero);
-        Vector2 screenPoint2 = cam.ViewportToWorldPoint(Vector2.one);
-        halfScreenSize.x = Mathf.Abs(screenPoint1.x - screenPoint2.x);
-        halfScreenSize.y = Mathf.Abs(screenPoint1.y - screenPoint2.y);
-        halfScreenSize /= 2;
-
-        if (cam.ViewportToWorldPoint(Vector2.zero).y < roomLowerLeft.y)
-        {
-            useOffsetY = true;
-            corner.y = roomLowerLeft.y;
-            desiredCameraOffset.y = halfScreenSize.y;
-        }
-        else if(cam.ViewportToWorldPoint(Vector2.one).y > roomUpperRight.y)
-        {
-            useOffsetY = true;
-            corner.y = roomUpperRight.y;
-            desiredCameraOffset.y = -halfScreenSize.y;
-        }
-
-        if (cam.ViewportToWorldPoint(Vector2.zero).x < roomLowerLeft.x)
-        {
-            useOffsetX = true;
-            corner.x = roomLowerLeft.x;
-            desiredCameraOffset.x = halfScreenSize.x;
-        }
-        else if(cam.ViewportToWorldPoint(Vector2.one).x > roomUpperRight.x)
-        {
-            useOffsetX = true;
-            corner.x = roomUpperRight.x;
-            desiredCameraOffset.x = -halfScreenSize.x;
-        }
-
-        //SuperDebugger.DrawPlus(corner, Color.yellow);
-
-        desiredCameraPosition = new Vector2(corner.x + desiredCameraOffset.x, corner.y + desiredCameraOffset.y);
-
-        //Set player position as desired if player in proper range
-        
-        if(!useOffsetX)
-        {
-            desiredCameraPosition.x = trackedTransform.position.x;
-        }
-        if(!useOffsetY)
-        {
-            desiredCameraPosition.y = trackedTransform.position.y;
-        }
-
-        
-
-
-        SuperDebugger.DrawPlus(desiredCameraPosition, Color.red, 1, .5f);
-        */
-
     }
 
-    private void ConstrainCameraToBounds(ref Vector2 desiredPosition)
+    private void ConstrainCameraToBounds()
     {
         Bounds camBounds = cameraBounds.bounds;
         Vector2 roomUpperRight = camBounds.center + camBounds.extents;
@@ -204,40 +136,47 @@ public class BoundableCamera : MonoBehaviour
         halfScreenSize.y = Mathf.Abs(screenPoint1.y - screenPoint2.y);
         halfScreenSize /= 2;
 
-        if (cam.ViewportToWorldPoint(Vector2.zero).y < roomLowerLeft.y)
+        Vector2 prospectiveCameraLowerLeft = desiredCameraPosition - halfScreenSize;
+        Vector2 prospectiveCameraUperRight = desiredCameraPosition + halfScreenSize;
+
+        if (prospectiveCameraLowerLeft.y < roomLowerLeft.y)
         {
             useOffsetY = true;
             corner.y = roomLowerLeft.y;
             desiredCameraOffset.y = halfScreenSize.y;
         }
-        else if (cam.ViewportToWorldPoint(Vector2.one).y > roomUpperRight.y)
+        else if (prospectiveCameraUperRight.y > roomUpperRight.y)
         {
             useOffsetY = true;
             corner.y = roomUpperRight.y;
             desiredCameraOffset.y = -halfScreenSize.y;
         }
 
-        if (cam.ViewportToWorldPoint(Vector2.zero).x < roomLowerLeft.x)
+        if (prospectiveCameraLowerLeft.x < roomLowerLeft.x)
         {
             useOffsetX = true;
             corner.x = roomLowerLeft.x;
             desiredCameraOffset.x = halfScreenSize.x;
         }
-        else if (cam.ViewportToWorldPoint(Vector2.one).x > roomUpperRight.x)
+        else if (prospectiveCameraUperRight.x > roomUpperRight.x)
         {
             useOffsetX = true;
             corner.x = roomUpperRight.x;
             desiredCameraOffset.x = -halfScreenSize.x;
         }
 
-        if(useOffsetX)
+        //SuperDebugger.DrawBoxAtPoint(desiredCameraPosition, .4f, Color.white);
+
+        if (useOffsetX)
         {
-            desiredPosition.x = corner.x + desiredCameraOffset.x;
+            desiredCameraPosition.x = corner.x + desiredCameraOffset.x;
         }
         if(useOffsetY)
         {
-            desiredPosition.y = corner.y + desiredCameraOffset.y;
+            desiredCameraPosition.y = corner.y + desiredCameraOffset.y;
         }
+
+        //SuperDebugger.DrawBoxAtPoint(desiredCameraPosition, 0.43f, Color.black);
     }
 
     private void LerpToNewTrackingLocation()
