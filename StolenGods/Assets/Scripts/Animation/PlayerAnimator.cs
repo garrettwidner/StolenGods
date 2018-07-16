@@ -10,6 +10,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private void FixedUpdate()
     {
+        print("Groundmover is moving: " + groundMover.IsMoving);
         if(groundMover.IsMoving)
         {
             SetMovingDirection();

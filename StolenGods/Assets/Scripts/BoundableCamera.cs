@@ -101,7 +101,7 @@ public class BoundableCamera : MonoBehaviour
         {
             KeepCameraOnTarget();
         }
-        print(desiredCameraPosition);
+        //print(desiredCameraPosition);
     }
 
     private void SetDesiredCameraPosition()
