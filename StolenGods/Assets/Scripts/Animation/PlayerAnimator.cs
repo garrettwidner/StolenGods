@@ -17,47 +17,54 @@ public class PlayerAnimator : MonoBehaviour
         }
         else
         {
+            print("Is setting standing direction");
             SetStandingDirection();
         }
     }
 
     private void SetStandingDirection()
     {
-        if (groundMover.FaceDirection == Vector2.up)
+        if (groundMover.FaceDirection.x != 0)
+        {
+            if (groundMover.FaceDirection.x == 1)
+            {
+                spriteAnimator.Play("StandRight");
+            }
+            else
+            {
+                spriteAnimator.Play("StandLeft");
+            }
+        }
+        else if (groundMover.FaceDirection == Vector2.up)
         {
             spriteAnimator.Play("StandUp");
-        }
-        else if (groundMover.FaceDirection == Vector2.right)
-        {
-            spriteAnimator.Play("StandRight");
         }
         else if (groundMover.FaceDirection == Vector2.down)
         {
             spriteAnimator.Play("StandDown");
         }
-        else if (groundMover.FaceDirection == Vector2.left)
-        {
-            spriteAnimator.Play("StandLeft");
-        }
     }
 
     private void SetMovingDirection()
     {
-        if (groundMover.FaceDirection == Vector2.up)
+        if (groundMover.FaceDirection.x != 0)
+        {
+            if (groundMover.FaceDirection.x == 1)
+            {
+                spriteAnimator.Play("RunRight");
+            }
+            else
+            {
+                spriteAnimator.Play("RunLeft");
+            }
+        }
+        else if (groundMover.FaceDirection == Vector2.up)
         {
             spriteAnimator.Play("RunUp");
         }
-        else if (groundMover.FaceDirection == Vector2.right)
-        {
-            spriteAnimator.Play("RunRight");
-        }
-        else if(groundMover.FaceDirection == Vector2.down)
+        else if (groundMover.FaceDirection == Vector2.down)
         {
             spriteAnimator.Play("RunDown");
-        }
-        else if(groundMover.FaceDirection == Vector2.left)
-        {
-            spriteAnimator.Play("RunLeft");
         }
     }
 
