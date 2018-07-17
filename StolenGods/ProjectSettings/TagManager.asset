@@ -44,6 +44,12 @@ TagManager:
   - name: Ground
     uniqueID: 3529432767
     locked: 0
+  - name: AttackUnderPlayer
+    uniqueID: 3608386443
+    locked: 0
   - name: Player
     uniqueID: 975208747
+    locked: 0
+  - name: AttackOverPlayer
+    uniqueID: 4247907561
     locked: 0

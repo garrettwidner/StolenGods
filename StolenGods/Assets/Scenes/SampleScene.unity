@@ -816,11 +816,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 519420031}
-  TESTstartRoom: {fileID: 1769861988}
-  TESTroomBounds1: {fileID: 1769861988}
-  TESTroomBounds2: {fileID: 1229869096}
-  TESTlargeRoomBounds: {fileID: 208740469}
-  TESTplayerTransform: {fileID: 1289058452}
 --- !u!1 &726558933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1679,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 975208747
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 6af6f2cf018e7fc459747e09cc121a8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2074,9 +2069,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  J_TEST_RAPID_INCREMENT: 1
-  K_TEST_SLOW_INCREMENT: 5
-  L_TEST_IMMEDIATE_INCREMENT: -10
 --- !u!1 &2023712094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,6 +2079,7 @@ GameObject:
   - component: {fileID: 2023712095}
   - component: {fileID: 2023712096}
   - component: {fileID: 2023712097}
+  - component: {fileID: 2023712098}
   m_Layer: 0
   m_Name: AttackObject
   m_TagString: Untagged
@@ -2139,8 +2132,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -47059735
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2164,11 +2157,170 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a38341d6722ce2498531e3cbfaaa9b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  animations: []
+  spriteRenderer: {fileID: 2023712096}
+  animations:
+  - name: uAttackUp
+    fps: 13
+    frames:
+    - {fileID: 21300030, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300038, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300046, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300006, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToUp
+      frame: 4
+  - name: uAttackDown
+    fps: 13
+    frames:
+    - {fileID: 21300006, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300014, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300022, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300030, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToDown
+      frame: 4
+  - name: rAttackUp
+    fps: 13
+    frames:
+    - {fileID: 21300024, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToUp
+      frame: 4
+  - name: rAttackDown
+    fps: 13
+    frames:
+    - {fileID: 21300000, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300008, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300016, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300024, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToDown
+      frame: 4
+  - name: dAttackUp
+    fps: 13
+    frames:
+    - {fileID: 21300026, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300034, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300042, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300002, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToUp
+      frame: 4
+  - name: dAttackDown
+    fps: 13
+    frames:
+    - {fileID: 21300002, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToDown
+      frame: 4
+  - name: lAttackUp
+    fps: 13
+    frames:
+    - {fileID: 21300028, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300036, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300044, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300004, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers:
+    - name: SetDiamondsToUp
+      frame: 4
+  - name: lAttackDown
+    fps: 13
+    frames:
+    - {fileID: 21300004, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300012, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300020, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    - {fileID: 21300028, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 1
+    triggers:
+    - name: SetDiamondsToDown
+      frame: 4
+  - name: uDiamondUp
+    fps: 1
+    frames:
+    - {fileID: 21300030, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: uDiamondDown
+    fps: 1
+    frames:
+    - {fileID: 21300006, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: rDiamondUp
+    fps: 1
+    frames:
+    - {fileID: 21300024, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: rDiamondDown
+    fps: 1
+    frames:
+    - {fileID: 21300000, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: dDiamondUp
+    fps: 1
+    frames:
+    - {fileID: 21300026, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: dDiamondDown
+    fps: 1
+    frames:
+    - {fileID: 21300002, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: lDiamondUp
+    fps: 1
+    frames:
+    - {fileID: 21300028, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
+  - name: lDiamondDown
+    fps: 1
+    frames:
+    - {fileID: 21300004, guid: f6afa12d81773c2429f89fcc364b61c0, type: 3}
+    sequenceCode: 
+    cue: 
+    triggers: []
   loop: 0
   speedMultiplier: 1
   playAnimationOnStart: 
+--- !u!114 &2023712098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2023712094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b06e8b3efc5dd41b8b1ef3e64757f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackAnimator: {fileID: 2023712097}
+  groundMover: {fileID: 1289058454}
 --- !u!1 &2053850495
 GameObject:
   m_ObjectHideFlags: 0

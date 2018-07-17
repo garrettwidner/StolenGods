@@ -4,7 +4,7 @@ using InControl;
 public class PlayerActions : PlayerActionSet 
 {
     public PlayerAction Pickup;
-    public PlayerAction Project;
+    public PlayerAction Attack;
     public PlayerAction Pause;
     public PlayerAction Quit;
     public PlayerAction Left;
@@ -28,7 +28,7 @@ public class PlayerActions : PlayerActionSet
     public PlayerActions()
     {
         Pickup = CreatePlayerAction("PickUp");
-        Project = CreatePlayerAction("Project");
+        Attack = CreatePlayerAction("Attack");
         Pause = CreatePlayerAction("Pause");
         Quit = CreatePlayerAction("Quit");
         Left = CreatePlayerAction("Move Left");
@@ -45,8 +45,8 @@ public class PlayerActions : PlayerActionSet
         playerActions.Pickup.AddDefaultBinding(InputControlType.Action1);
         playerActions.Pickup.AddDefaultBinding(Key.K);
 
-        playerActions.Project.AddDefaultBinding(InputControlType.Action2);
-        playerActions.Project.AddDefaultBinding(Key.J);
+        playerActions.Attack.AddDefaultBinding(InputControlType.Action2);
+        playerActions.Attack.AddDefaultBinding(Key.J);
 
         playerActions.Pause.AddDefaultBinding(Key.Return);
         playerActions.Pause.AddDefaultBinding(InputControlType.Menu);

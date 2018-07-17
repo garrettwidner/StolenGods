@@ -26,6 +26,11 @@ public static class Extensions
 	#endregion
 
     #region Vector2
+    /// <summary>
+    /// Favors x axis in cases where inputs are equivalent
+    /// </summary>
+    /// <param name="vector"></param>
+    /// <returns></returns>
     public static Vector2 ClosestCardinalDirection(this Vector2 vector)
     {
         if (vector == Vector2.zero)
@@ -33,7 +38,7 @@ public static class Extensions
             return Vector2.zero;
         }
 
-        if (Mathf.Abs(vector.x) > Mathf.Abs(vector.y))
+        if (Mathf.Abs(vector.x) >= Mathf.Abs(vector.y))
         {
             return new Vector2(vector.x, 0);
         }

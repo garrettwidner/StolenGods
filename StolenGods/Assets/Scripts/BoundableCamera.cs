@@ -6,11 +6,13 @@ public class BoundableCamera : MonoBehaviour
 {
     public Camera cam;
 
+    /*
     public Collider2D TESTstartRoom;
     public Collider2D TESTroomBounds1;
     public Collider2D TESTroomBounds2;
     public Collider2D TESTlargeRoomBounds;
     public Transform TESTplayerTransform;
+    */
 
     private Collider2D cameraBounds;
     private Transform trackedTransform;
@@ -25,7 +27,7 @@ public class BoundableCamera : MonoBehaviour
 
     private void Start()
     {
-        SnapToSmallRoom(TESTstartRoom);
+        //SnapToSmallRoom(TESTstartRoom);
     }
 
     private void SetSmallRoomBools(Collider2D boundsCollider)
@@ -49,7 +51,7 @@ public class BoundableCamera : MonoBehaviour
         StartLerp();
     }
 
-    private void MoveToLargeRoom(Collider2D boundsCollider, Transform trackedObject)
+    private void LerpToLargeRoom(Collider2D boundsCollider, Transform trackedObject)
     {
         isInLargeRoom = true;
         cameraBounds = boundsCollider;
@@ -68,6 +70,7 @@ public class BoundableCamera : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.K))
         {
             print("Lerping camera to room location 1");
@@ -83,8 +86,9 @@ public class BoundableCamera : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             print("Lerping camera to TOP room");
-            MoveToLargeRoom(TESTlargeRoomBounds, TESTplayerTransform);
+            LerpToLargeRoom(TESTlargeRoomBounds, TESTplayerTransform);
         }
+        */
 
         SetDesiredCameraPosition(); 
         
@@ -106,15 +110,19 @@ public class BoundableCamera : MonoBehaviour
 
     private void SetDesiredCameraPosition()
     {
-        if(!isInLargeRoom )
+        if(cameraBounds != null)
         {
-            desiredCameraPosition = cameraBounds.bounds.center;
-            return;
+            if (!isInLargeRoom)
+            {
+                desiredCameraPosition = cameraBounds.bounds.center;
+                return;
+            }
+            else
+            {
+                desiredCameraPosition = trackedTransform.position;
+            }
         }
-        else
-        {
-            desiredCameraPosition = trackedTransform.position;
-        }
+        
     }
 
     private void ConstrainCameraToBounds()
