@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerAttackAnimator : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerAttackAnimator : MonoBehaviour
     public SpriteRenderer attackRenderer;
     public string sortingLayerAboveCharacter;
     public string sortingLayerBelowCharacter;
+
+    public AttackEvent onAttackAnimated;
 
     private bool areDiamondsUp = true;
     private bool isSlashAnimationDone = false;
@@ -72,18 +75,34 @@ public class PlayerAttackAnimator : MonoBehaviour
         if (attackDirection == Vector2.up)
         {
             attackAnimator.Play("uAttackUp", false);
+            if(onAttackAnimated!= null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.up));
+            }
         }
         else if(attackDirection == Vector2.right)
         {
             attackAnimator.Play("rAttackUp", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.right));
+            }
         }
         else if(attackDirection == Vector2.down)
         {
             attackAnimator.Play("dAttackUp", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.down));
+            }
         }
         else if(attackDirection == Vector2.left)
         {
             attackAnimator.Play("lAttackUp", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.left));
+            }
         }
     }
 
@@ -95,18 +114,34 @@ public class PlayerAttackAnimator : MonoBehaviour
         if (attackDirection == Vector2.up)
         {
             attackAnimator.Play("uAttackDown", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.up));
+            }
         }
         else if (attackDirection == Vector2.right)
         {
             attackAnimator.Play("rAttackDown", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.right));
+            }
         }
         else if (attackDirection == Vector2.down)
         {
             attackAnimator.Play("dAttackDown", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.down));
+            }
         }
         else if (attackDirection == Vector2.left)
         {
             attackAnimator.Play("lAttackDown", false);
+            if (onAttackAnimated != null)
+            {
+                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.left));
+            }
         }
     }
 
@@ -150,5 +185,10 @@ public class PlayerAttackAnimator : MonoBehaviour
         {
             attackAnimator.Play("lDiamondDown", true);
         }
+    }
+
+    [System.Serializable]
+    public class AttackEvent : UnityEvent<Attack>
+    {
     }
 }

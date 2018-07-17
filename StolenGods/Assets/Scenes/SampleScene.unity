@@ -1554,6 +1554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389271302}
   - component: {fileID: 1389271303}
+  - component: {fileID: 1389271304}
   m_Layer: 0
   m_Name: dAttackArea
   m_TagString: Untagged
@@ -1580,7 +1581,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1389271301}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1599,6 +1600,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1389271304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1389271301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8052ed9f4ffce4688ffe10beb9c0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 2
+  attackCollider: {fileID: 1389271303}
+  attackDuration: 0.3
 --- !u!1 &1553373427
 GameObject:
   m_ObjectHideFlags: 0
@@ -1608,6 +1623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553373428}
   - component: {fileID: 1553373429}
+  - component: {fileID: 1553373430}
   m_Layer: 0
   m_Name: lAttackArea
   m_TagString: Untagged
@@ -1634,7 +1650,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1553373427}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1653,6 +1669,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1553373430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1553373427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8052ed9f4ffce4688ffe10beb9c0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 3
+  attackCollider: {fileID: 1553373429}
+  attackDuration: 0.3
 --- !u!1 &1571647548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1589918524}
   - component: {fileID: 1589918525}
+  - component: {fileID: 1589918526}
   m_Layer: 0
   m_Name: rAttackArea
   m_TagString: Untagged
@@ -1757,7 +1788,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1589918523}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -1776,6 +1807,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1589918526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589918523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8052ed9f4ffce4688ffe10beb9c0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 1
+  attackCollider: {fileID: 1589918525}
+  attackDuration: 0.3
 --- !u!1 &1696741608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774554423}
   - component: {fileID: 1774554424}
+  - component: {fileID: 1774554425}
   m_Layer: 0
   m_Name: uAttackArea
   m_TagString: Untagged
@@ -2111,7 +2157,7 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774554422}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -2130,6 +2176,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &1774554425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1774554422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a8052ed9f4ffce4688ffe10beb9c0f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
+  attackCollider: {fileID: 1774554424}
+  attackDuration: 0.3
 --- !u!1 &1848778970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,6 +2610,55 @@ MonoBehaviour:
   attackRenderer: {fileID: 2023712096}
   sortingLayerAboveCharacter: AttackOverPlayer
   sortingLayerBelowCharacter: AttackUnderPlayer
+  onAttackAnimated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1774554425}
+        m_MethodName: AttackOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1589918526}
+        m_MethodName: AttackOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1389271304}
+        m_MethodName: AttackOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1553373430}
+        m_MethodName: AttackOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: PlayerAttackAnimator+AttackEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2053850495
 GameObject:
   m_ObjectHideFlags: 0
