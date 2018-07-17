@@ -9,23 +9,17 @@ public class PlayerAttackAnimator : MonoBehaviour
     [Header("word at end denotes attack upward/downward attack")]
     public SpriteAnimator attackAnimator;
     public GroundMover groundMover;
+    public SpriteRenderer attackRenderer;
+    public string sortingLayerAboveCharacter;
+    public string sortingLayerBelowCharacter;
 
     private bool areDiamondsUp = true;
     private bool isSlashAnimationDone = false;
     private PlayerActions playerActions;
 
-    private void SetDiamondsToDown()
+    private void DiamondSlashFinished()
     {
         isSlashAnimationDone = true;
-        Vector2 facingDirection = groundMover.FaceDirection.ClosestCardinalDirection();
-        PlayDiamondsDown(facingDirection);
-    }
-
-    private void SetDiamondsToUp()
-    {
-        isSlashAnimationDone = true;
-        Vector2 facingDirection = groundMover.FaceDirection.ClosestCardinalDirection();
-        PlayDiamondsUp(facingDirection);
     }
 
     private void Start()
@@ -36,6 +30,17 @@ public class PlayerAttackAnimator : MonoBehaviour
     private void Update()
     {
         Vector2 facingDirection = groundMover.FaceDirection.ClosestCardinalDirection();
+        facingDirection = (facingDirection == Vector2.zero) ? Vector2.down : facingDirection;
+
+        if(facingDirection == Vector2.up)
+        {
+            attackRenderer.sortingLayerName = sortingLayerBelowCharacter;
+        }
+        else
+        {
+            attackRenderer.sortingLayerName = sortingLayerAboveCharacter;
+        }
+
 
         if(playerActions.Attack.WasPressed)
         {
@@ -45,22 +50,23 @@ public class PlayerAttackAnimator : MonoBehaviour
         {
             PlayDownwardsAttack(facingDirection);
         }
-        if(isSlashAnimationDone)
+
+        if (isSlashAnimationDone)
         {
             if(areDiamondsUp)
             {
-                SetDiamondsToUp();
+                PlayDiamondsUp();
             }
             else
             {
-                SetDiamondsToDown();
+                PlayDiamondsDown();
             }
         }
     }
 
     private void PlayUpwardsAttack(Vector2 attackDirection)
     {
-        areDiamondsUp = true;
+        areDiamondsUp = false;
         isSlashAnimationDone = false;
 
         if (attackDirection == Vector2.up)
@@ -83,7 +89,7 @@ public class PlayerAttackAnimator : MonoBehaviour
 
     private void PlayDownwardsAttack(Vector2 attackDirection)
     {
-        areDiamondsUp = false;
+        areDiamondsUp = true;
         isSlashAnimationDone = false;
 
         if (attackDirection == Vector2.up)
@@ -104,8 +110,9 @@ public class PlayerAttackAnimator : MonoBehaviour
         }
     }
 
-    private void PlayDiamondsUp(Vector2 facingDirection)
+    private void PlayDiamondsUp()
     {
+        Vector2 facingDirection = groundMover.FaceDirection.ClosestCardinalDirection();
         if (facingDirection == Vector2.up)
         {
             attackAnimator.Play("uDiamondUp", true);
@@ -124,8 +131,9 @@ public class PlayerAttackAnimator : MonoBehaviour
         }
     }
 
-    private void PlayDiamondsDown(Vector2 facingDirection)
+    private void PlayDiamondsDown()
     {
+        Vector2 facingDirection = groundMover.FaceDirection.ClosestCardinalDirection();
         if (facingDirection == Vector2.up)
         {
             attackAnimator.Play("uDiamondDown", true);
