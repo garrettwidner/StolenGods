@@ -77,7 +77,8 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("uAttackUp", false);
             if(onAttackAnimated!= null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.up));
+                onAttackAnimated.Invoke(Attack.Direction.up, Attack.Orientation.up);
+
             }
         }
         else if(attackDirection == Vector2.right)
@@ -85,7 +86,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("rAttackUp", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.right));
+                onAttackAnimated.Invoke(Attack.Direction.right, Attack.Orientation.up);
             }
         }
         else if(attackDirection == Vector2.down)
@@ -93,7 +94,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("dAttackUp", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.down));
+                onAttackAnimated.Invoke(Attack.Direction.down, Attack.Orientation.up);
             }
         }
         else if(attackDirection == Vector2.left)
@@ -101,7 +102,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("lAttackUp", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.up, Attack.Direction.left));
+                onAttackAnimated.Invoke(Attack.Direction.left, Attack.Orientation.up);
             }
         }
     }
@@ -116,7 +117,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("uAttackDown", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.up));
+                onAttackAnimated.Invoke(Attack.Direction.up, Attack.Orientation.down);
             }
         }
         else if (attackDirection == Vector2.right)
@@ -124,7 +125,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("rAttackDown", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.right));
+                onAttackAnimated.Invoke(Attack.Direction.right, Attack.Orientation.down);
             }
         }
         else if (attackDirection == Vector2.down)
@@ -132,7 +133,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("dAttackDown", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.down));
+                onAttackAnimated.Invoke(Attack.Direction.down, Attack.Orientation.down);
             }
         }
         else if (attackDirection == Vector2.left)
@@ -140,7 +141,7 @@ public class PlayerAttackAnimator : MonoBehaviour
             attackAnimator.Play("lAttackDown", false);
             if (onAttackAnimated != null)
             {
-                onAttackAnimated.Invoke(new Attack(Attack.Orientation.down, Attack.Direction.left));
+                onAttackAnimated.Invoke(Attack.Direction.left, Attack.Orientation.down);
             }
         }
     }
@@ -188,7 +189,7 @@ public class PlayerAttackAnimator : MonoBehaviour
     }
 
     [System.Serializable]
-    public class AttackEvent : UnityEvent<Attack>
+    public class AttackEvent : UnityEvent<Attack.Direction, Attack.Orientation>
     {
     }
 }
